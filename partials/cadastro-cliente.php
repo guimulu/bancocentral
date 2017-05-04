@@ -15,29 +15,12 @@
 	$data_inicial = '';
 	$id_agencia = '';
 	$ativo = '';
+	$tipo_conta = '';
 
 	$mensagem = 'Dados Salvos Com Sucesso!';
 
 	if (!empty($_POST['id'])) {
-			//$id = $_POST['id'];
-			$nome = $_POST['nome'];
-			$cpf = $_POST['cpf'];
-			$rg = $_POST['rg'];
-			$rua = $_POST['rua'];
-			$numero = $_POST['numero'];
-			$cep = $_POST['cep'];
-			$complemento = $_POST['complemento'];
-			$telefone = $_POST['telefone'];
-			$cidade = $_POST['cidade'];
-			$id_uf = $_POST['id_uf'];
-			$data_inicial = $_POST['data_inicial'];
-			$id_agencia = $_POST['id_agencia'];
-			$ativo = $_POST['ativo'];
-
-			$sql = "UPDATE bc_clientes SET nome='$nome', cpf='$cpf', rg='$rg', rua='$rua', numero='$numero', cep='$cep', complemento='$complemento', telefone='$telefone', cidade='$cidade', id_uf='$id_uf', data_inicial='$data_inicial', id_agencia='$id_agencia', ativo=1 WHERE id = {$_POST['id']}";
-			mysql_query($sql);
-			echo $mensagem;
-			header('location: /bancocentral/index.php?pagina=listar-cliente');
+			
 		} else  if (!empty($_POST['nome'])){
 			//$id = $_POST['id'];
 			$nome = $_POST['nome'];
@@ -54,32 +37,15 @@
 			$id_agencia = $_POST['id_agencia'];
 			$ativo = $_POST['ativo'];
 			$conta = rand(10000000 , 99999999);
-			$sql = "INSERT INTO bc_clientes (cpf, rg, nome, rua, numero, cep, complemento, telefone, cidade, id_uf, data_inicial, id_agencia, ativo, conta, data_inclusao) VALUES ('$cpf', '$rg','$nome', '$rua', '$numero', '$cep', '$complemento', '$telefone', '$cidade', '$id_uf', '$data_inicial', '$id_agencia', 1, '$conta', CURRENT_TIMESTAMP)";
+			$tipo_conta = $_POST['tipo_conta'];
+
+			$sql = "INSERT INTO bc_clientes (cpf, rg, nome, rua, numero, cep, complemento, telefone, cidade, id_uf, data_inicial, id_agencia, ativo, conta, data_inclusao, tipo_conta) VALUES ('$cpf', '$rg','$nome', '$rua', '$numero', '$cep', '$complemento', '$telefone', '$cidade', '$id_uf', '$data_inicial', '$id_agencia', 1, '$conta', CURRENT_TIMESTAMP, '$tipo_conta')";
 
 			//var_dump($sql);
 			//exit;
 			$resultado = mysql_query($sql);
 			echo $mensagem;		
 			header('location: /bancocentral/index.php?pagina=listar-cliente');
-		} else if (isset($_GET['id'])) {
-			$sql = "SELECT * FROM bc_clientes where id = {$_GET['id']}";
-			$resultado = mysql_query($sql);
-			$row = mysql_fetch_assoc($resultado);
-
-			$id = $row['id'];
-			$nome = $row['nome'];
-			$cpf = $row['cpf'];
-			$rg = $row['rg'];
-			$rua = $row['rua'];
-			$numero = $row['numero'];
-			$cep = $row['cep'];
-			$complemento = $row['complemento'];
-			$telefone = $row['telefone'];
-			$cidade = $row['cidade'];
-			$id_uf = $row['id_uf'];
-			$data_inicial = $row['data_inicial'];
-			$id_agencia = $row['id_agencia'];
-			$ativo = $row['ativo'];
 		}
 ?>
 
@@ -98,6 +64,13 @@
 			<div class="form-group col-xs-12 col-md-3">
 				<label>RG</label><br>
 				<input type="text" name="rg" value="<?=$rg?>" maxlength="10" onkeyup="somenteNumeros(this);" class="width-max" required>
+			</div>
+			<div class="form-group col-xs-12 col-md-3">
+				<label>Tipo de Conta</label><br>
+				<select class="form-control width-max" name="tipo_conta" id="tipo-conta" required>
+				    <option value="poupanca">Poupança</option>
+				    <option value="corrente">Corrente</option>
+				</select>
 			</div>
 			<div class="form-group col-xs-12 col-md-4">	
 				<label>Rua</label><br>

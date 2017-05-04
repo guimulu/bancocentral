@@ -20,18 +20,18 @@
 		</thead>
 		<tbody>
 			<?php 
-				$sql = "SELECT * FROM bc_clientes AS c INNER JOIN bc_agencias AS a ON c.'id_agencia' = a.'id' WHERE ativo = 1 ORDER BY c.`id` ASC";
+				$sql = "SELECT * FROM bc_clientes AS c INNER JOIN bc_agencias AS a ON c.id_agencia = a.id WHERE c.ativo = 1 ORDER BY c.id ASC";
 				//$sql = "SELECT * FROM bc_clientes where ativo = 1";
+				//var_dump($sql);
 				$resultado = mysql_query($sql);
-				var_dump($resultado);
-				exit;
+				//var_dump($resultado);
 				while ($clientes = mysql_fetch_assoc($resultado)) { ?>
 				<tr>
 					<td><?php echo $clientes['id_banco'] ?></td>
 					<td><?php echo $clientes['id_agencia'] ?></td>
 					<td><?php echo $clientes['conta'] ?></td>
 					<td><?php echo $clientes['nome'] ?></td>
-					<td>Corrente</td>
+					<td><?php echo $clientes['tipo_conta'] ?></td>
 					<td><?php echo $clientes['saldo'] ?></td>
 				</tr>
 			<?php } ?>
