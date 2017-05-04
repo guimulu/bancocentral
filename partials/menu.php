@@ -14,12 +14,13 @@
 						<a class="dropdown-item" href="index.php?pagina=listar-banco">Banco</a>
 						<a class="dropdown-item" href="index.php?pagina=listar-agencia">Agencia</a>
 						<a class="dropdown-item" href="index.php?pagina=listar-cliente">Cliente</a>
+						<a class="dropdown-item" href="index.php?pagina=listar-saldo">Saldos</a>
 					</div>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Relatórios</a>
+					<a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Movimentação</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="#">Relatorio 1</a>
+						<a class="dropdown-item" href="index.php?pagina=retirada-deposito">Retirada/Depósito</a>
 						<a class="dropdown-item" href="#">Relatorio 2</a>
 						<a class="dropdown-item" href="#">Relatorio 3 etc...</a>
 					</div>
